@@ -1,16 +1,12 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models
+﻿using System.Text.Json.Serialization;
+
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
+
+public class Ability
 {
-    using Newtonsoft.Json;
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-    public class Ability
-    {
-        [JsonProperty("name")] 
-        public string Name { get; set; }
+    [JsonPropertyName("text")] public string Text { get; set; }
 
-        [JsonProperty("text")] 
-        public string Text { get; set; }
-
-        [JsonProperty("type")] 
-        public string Type { get; set; }
-    }
+    [JsonPropertyName("type")] public string Type { get; set; }
 }

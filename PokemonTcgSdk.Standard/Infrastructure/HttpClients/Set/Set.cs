@@ -1,39 +1,29 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Set
+﻿using System.Text.Json.Serialization;
+using PokemonTcgSdk.Standard.Infrastructure.HttpClients.CommonModels;
+
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Set;
+
+public class Set : ApiResource
 {
-    using CommonModels;
-    using Newtonsoft.Json;
+    public override string Id { get; set; }
 
-    public class Set : ApiResource
-    {
-        public override string Id { get; set; }
+    internal new static string ApiEndpoint { get; } = "sets";
 
-        internal new static string ApiEndpoint { get; } = "sets";
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("series")] public string Series { get; set; }
 
-        [JsonProperty("series")]
-        public string Series { get; set; }
+    [JsonPropertyName("printedTotal")] public long PrintedTotal { get; set; }
 
-        [JsonProperty("printedTotal")]
-        public long PrintedTotal { get; set; }
+    [JsonPropertyName("total")] public long Total { get; set; }
 
-        [JsonProperty("total")]
-        public long Total { get; set; }
+    [JsonPropertyName("legalities")] public Legalities Legalities { get; set; }
 
-        [JsonProperty("legalities")]
-        public Legalities Legalities { get; set; }
+    [JsonPropertyName("ptcgoCode")] public string PtcgoCode { get; set; }
 
-        [JsonProperty("ptcgoCode")]
-        public string PtcgoCode { get; set; }
+    [JsonPropertyName("releaseDate")] public string ReleaseDate { get; set; }
 
-        [JsonProperty("releaseDate")]
-        public string ReleaseDate { get; set; }
+    [JsonPropertyName("updatedAt")] public string UpdatedAt { get; set; }
 
-        [JsonProperty("updatedAt")]
-        public string UpdatedAt { get; set; }
-
-        [JsonProperty("images")]
-        public Images Images { get; set; }
-    }
+    [JsonPropertyName("images")] public Images Images { get; set; }
 }

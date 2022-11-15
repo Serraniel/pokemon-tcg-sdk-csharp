@@ -1,8 +1,7 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.SubTypes;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
-using System.Collections.Generic;
-
-using Newtonsoft.Json;
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.SubTypes;
 
 public class SubTypes : ResourceBase
 {
@@ -10,7 +9,5 @@ public class SubTypes : ResourceBase
 
     internal new static string ApiEndpoint { get; } = "subtypes";
 
-    [JsonProperty("data")]
-    public List<string> SubType { get; set; }
-
+    [JsonPropertyName("data")] public List<string> SubType { get; set; }
 }

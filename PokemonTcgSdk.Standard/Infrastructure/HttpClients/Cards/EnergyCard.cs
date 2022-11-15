@@ -1,11 +1,9 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
+using PokemonTcgSdk.Standard.Infrastructure.HttpClients.CommonModels;
 
-using System.Collections.Generic;
-
-using Models;
-using Newtonsoft.Json;
-using CommonModels;
-using Set;
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards;
 
 public class EnergyCard : ApiResource
 {
@@ -13,39 +11,35 @@ public class EnergyCard : ApiResource
 
     public override string Id { get; set; }
 
-    [JsonProperty("name")]
-    public string Name { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-    [JsonProperty("supertype")]
-    public string Supertype { get; set; }
+    [JsonPropertyName("supertype")] public string Supertype { get; set; }
 
-    [JsonProperty("subtypes")]
-    public List<string> Subtypes { get; set; }
+    [JsonPropertyName("subtypes")] public List<string> Subtypes { get; set; }
 
-    [JsonProperty("rules", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("rules")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<string> Rules { get; set; }
 
-    [JsonProperty("set")]
-    public Set Set { get; set; }
+    [JsonPropertyName("set")] public Set.Set Set { get; set; }
 
-    [JsonProperty("number")]
-    public string Number { get; set; }
+    [JsonPropertyName("number")] public string Number { get; set; }
 
-    [JsonProperty("artist", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("artist")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string Artist { get; set; }
 
-    [JsonProperty("rarity")]
-    public string Rarity { get; set; }
+    [JsonPropertyName("rarity")] public string Rarity { get; set; }
 
-    [JsonProperty("legalities")]
-    public Legalities Legalities { get; set; }
+    [JsonPropertyName("legalities")] public Legalities Legalities { get; set; }
 
-    [JsonProperty("images")]
-    public CardImage Images { get; set; }
+    [JsonPropertyName("images")] public CardImage Images { get; set; }
 
-    [JsonProperty("tcgplayer", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("tcgplayer")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public TcgPlayer Tcgplayer { get; set; }
 
-    [JsonProperty("cardmarket", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("cardmarket")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public CardMarket Cardmarket { get; set; }
 }

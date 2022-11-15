@@ -1,13 +1,11 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Types;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
-using System.Collections.Generic;
-
-using Newtonsoft.Json;
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Types;
 
 public class ElementTypes : ResourceBase
 {
-    [JsonProperty("data")]
-    public List<string> ElementType { get; set; }
+    [JsonPropertyName("data")] public List<string> ElementType { get; set; }
 
     internal new static string ApiEndpoint { get; } = "types";
 

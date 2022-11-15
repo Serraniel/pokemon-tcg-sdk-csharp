@@ -1,23 +1,18 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
-using System.Collections.Generic;
-
-using Newtonsoft.Json;
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
 
 public class Attack
 {
-    [JsonProperty("name")]
-    public string Name { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-    [JsonProperty("cost")]
-    public List<string> Cost { get; set; }
+    [JsonPropertyName("cost")] public List<string> Cost { get; set; }
 
-    [JsonProperty("convertedEnergyCost")]
+    [JsonPropertyName("convertedEnergyCost")]
     public long ConvertedEnergyCost { get; set; }
 
-    [JsonProperty("damage")]
-    public string Damage { get; set; }
+    [JsonPropertyName("damage")] public string Damage { get; set; }
 
-    [JsonProperty("text")]
-    public string Text { get; set; }
+    [JsonPropertyName("text")] public string Text { get; set; }
 }

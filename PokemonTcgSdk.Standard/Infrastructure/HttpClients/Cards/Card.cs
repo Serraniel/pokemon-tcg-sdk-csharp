@@ -1,11 +1,9 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
+using PokemonTcgSdk.Standard.Infrastructure.HttpClients.CommonModels;
 
-using System.Collections.Generic;
-
-using CommonModels;
-using Models;
-using Newtonsoft.Json;
-using Set;
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards;
 
 public class Card : ApiResource
 {
@@ -13,81 +11,84 @@ public class Card : ApiResource
 
     internal new static string ApiEndpoint { get; } = "cards";
 
-    [JsonProperty("name")]
-    public string Name { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-    [JsonProperty("supertype")]
-    public string Supertype { get; set; }
+    [JsonPropertyName("supertype")] public string Supertype { get; set; }
 
-    [JsonProperty("subtypes")]
-    public List<string> Subtypes { get; set; }
+    [JsonPropertyName("subtypes")] public List<string> Subtypes { get; set; }
 
-    [JsonProperty("level", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("level")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string Level { get; set; }
 
-    [JsonProperty("hp", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("hp")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int Hp { get; set; }
 
-    [JsonProperty("types")]
-    public List<string> Types { get; set; }
+    [JsonPropertyName("types")] public List<string> Types { get; set; }
 
-    [JsonProperty("evolvesFrom", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("evolvesFrom")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string EvolvesFrom { get; set; }
 
-    [JsonProperty("abilities", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("abilities")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<Ability> Abilities { get; set; }
 
-    [JsonProperty("attacks", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("attacks")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<Attack> Attacks { get; set; }
 
-    [JsonProperty("weaknesses", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("weaknesses")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<Resistance> Weaknesses { get; set; }
 
-    [JsonProperty("resistances", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("resistances")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<Resistance> Resistances { get; set; }
 
-    [JsonProperty("retreatCost", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("retreatCost")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<string> RetreatCost { get; set; }
 
-    [JsonProperty("convertedRetreatCost", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("convertedRetreatCost")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int ConvertedRetreatCost { get; set; }
 
-    [JsonProperty("set")]
-    public Set Set { get; set; }
+    [JsonPropertyName("set")] public Set.Set Set { get; set; }
 
-    [JsonProperty("number")]
-    public string Number { get; set; }
+    [JsonPropertyName("number")] public string Number { get; set; }
 
-    [JsonProperty("artist")]
-    public string Artist { get; set; }
+    [JsonPropertyName("artist")] public string Artist { get; set; }
 
-    [JsonProperty("rarity", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("rarity")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string Rarity { get; set; }
 
-    [JsonProperty("nationalPokedexNumbers")]
+    [JsonPropertyName("nationalPokedexNumbers")]
     public List<int> NationalPokedexNumbers { get; set; }
 
-    [JsonProperty("legalities")]
-    public Legalities Legalities { get; set; }
+    [JsonPropertyName("legalities")] public Legalities Legalities { get; set; }
 
-    [JsonProperty("images")]
-    public CardImage Images { get; set; }
+    [JsonPropertyName("images")] public CardImage Images { get; set; }
 
-    [JsonProperty("tcgplayer")]
-    public TcgPlayer Tcgplayer { get; set; }
+    [JsonPropertyName("tcgplayer")] public TcgPlayer Tcgplayer { get; set; }
 
-    [JsonProperty("cardmarket")]
-    public CardMarket Cardmarket { get; set; }
+    [JsonPropertyName("cardmarket")] public CardMarket Cardmarket { get; set; }
 
-    [JsonProperty("evolvesTo", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("evolvesTo")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<string> EvolvesTo { get; set; }
 
-    [JsonProperty("flavorText", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("flavorText")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string FlavorText { get; set; }
 
-    [JsonProperty("rules", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("rules")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public List<string> Rules { get; set; }
 
-    [JsonProperty("regulationMark", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("regulationMark")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string RegulationMark { get; set; }
 }

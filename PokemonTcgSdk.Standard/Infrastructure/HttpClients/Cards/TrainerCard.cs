@@ -9,7 +9,7 @@ public class TrainerCard : ApiResource
 {
     internal new static string ApiEndpoint { get; } = "cards?q=supertype:trainer";
 
-    public override string Id { get; set; }
+    [JsonPropertyName("id")] public override string Id { get; set; }
 
     [JsonPropertyName("name")] public string Name { get; set; }
 
@@ -54,7 +54,7 @@ public class TrainerCard : ApiResource
     public string RegulationMark { get; set; }
 
     [JsonPropertyName("hp")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Hp { get; set; }
 
     [JsonPropertyName("abilities")]

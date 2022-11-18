@@ -7,7 +7,7 @@ namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards;
 
 public class Card : ApiResource
 {
-    public override string Id { get; set; }
+    [JsonPropertyName("id")] public override string Id { get; set; }
 
     internal new static string ApiEndpoint { get; } = "cards";
 
@@ -22,7 +22,9 @@ public class Card : ApiResource
     public string Level { get; set; }
 
     [JsonPropertyName("hp")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    [JsonNumberHandling(JsonNumberHandling
+        .AllowReadingFromString)]
     public int Hp { get; set; }
 
     [JsonPropertyName("types")] public List<string> Types { get; set; }
@@ -52,7 +54,7 @@ public class Card : ApiResource
     public List<string> RetreatCost { get; set; }
 
     [JsonPropertyName("convertedRetreatCost")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int ConvertedRetreatCost { get; set; }
 
     [JsonPropertyName("set")] public Set.Set Set { get; set; }

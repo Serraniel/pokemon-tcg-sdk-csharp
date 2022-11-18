@@ -9,7 +9,7 @@ public class EnergyCard : ApiResource
 {
     internal new static string ApiEndpoint { get; } = "cards?q=supertype:energy";
 
-    public override string Id { get; set; }
+    [JsonPropertyName("id")] public override string Id { get; set; }
 
     [JsonPropertyName("name")] public string Name { get; set; }
 

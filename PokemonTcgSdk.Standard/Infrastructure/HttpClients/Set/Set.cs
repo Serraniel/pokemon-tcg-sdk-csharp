@@ -5,7 +5,7 @@ namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Set;
 
 public class Set : ApiResource
 {
-    public override string Id { get; set; }
+    [JsonPropertyName("id")] public override string Id { get; set; }
 
     internal new static string ApiEndpoint { get; } = "sets";
 

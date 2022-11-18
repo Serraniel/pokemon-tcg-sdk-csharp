@@ -8,7 +8,8 @@ namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards;
 public class PokemonCard : ApiResource
 {
     internal new static string ApiEndpoint { get; } = "cards?q=supertype:pokemon";
-    public override string Id { get; set; }
+
+    [JsonPropertyName("id")] public override string Id { get; set; }
 
     [JsonPropertyName("name")] public string Name { get; set; }
 
@@ -20,7 +21,9 @@ public class PokemonCard : ApiResource
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string Level { get; set; }
 
-    [JsonPropertyName("hp")] public int Hp { get; set; }
+    [JsonPropertyName("hp")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public int Hp { get; set; }
 
     [JsonPropertyName("types")] public List<string> Types { get; set; }
 

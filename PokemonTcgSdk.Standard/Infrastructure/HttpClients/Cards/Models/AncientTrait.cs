@@ -1,12 +1,10 @@
-﻿namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
+﻿using System.Text.Json.Serialization;
 
-using Newtonsoft.Json;
+namespace PokemonTcgSdk.Standard.Infrastructure.HttpClients.Cards.Models;
 
 public class AncientTrait
 {
-    [JsonProperty("name")]
-    public string Name { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-    [JsonProperty("text")]
-    public string Text { get; set; }
+    [JsonPropertyName("text")] public string Text { get; set; }
 }

@@ -29,11 +29,8 @@ public class PokemonCard : ApiResource
 
     [JsonPropertyName("evolvesFrom")] public string EvolvesFrom { get; set; }
 
-    [JsonProperty("ancientTrait")]
-    public AncientTrait AncientTrait { get; set; }
+    [JsonPropertyName("ancientTrait")] public AncientTrait AncientTrait { get; set; }
 
-    [JsonProperty("abilities")]
-    public List<Ability> Abilities { get; set; }
     [JsonPropertyName("abilities")] public List<Ability> Abilities { get; set; }
 
     [JsonPropertyName("attacks")] public List<Attack> Attacks { get; set; }

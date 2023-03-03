@@ -34,18 +34,17 @@ public class TcgPlayerPrices
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public Prices The1StEditionHolofoil { get; set; }
 
-        [JsonProperty("unlimitedHolofoil", NullValueHandling = NullValueHandling.Ignore)]
-        public Prices UnlimitedHolofoil { get; set; }
-
-        [JsonProperty("1stEdition", NullValueHandling = NullValueHandling.Ignore)]
-        public Prices The1StEdition { get; set; }
-
-        [JsonProperty("unlimited", NullValueHandling = NullValueHandling.Ignore)]
-        public Prices Unlimited { get; set; }
-    }
     [JsonPropertyName("unlimitedHolofoil")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public Prices UnlimitedHolofoil { get; set; }
+
+    [JsonPropertyName("1stEdition")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Prices The1StEdition { get; set; }
+
+    [JsonPropertyName("unlimited")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Prices Unlimited { get; set; }
 }
 
 public class Prices

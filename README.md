@@ -1,13 +1,13 @@
 
 # Pokémon TCG SDK C#
-A .Net wrapper for the Pokemon API at [pokemontcg.io](pokemontcg.io).
+A .Net wrapper for the Pokemon API at [pokemontcg.io](https://pokemontcg.io).
 
 Targets .Net Standard 2.0+.
 
 [![Nuget](https://img.shields.io/nuget/v/PokemonTcgSdk?style=flat-square)](https://www.nuget.org/packages/PokemonTcgSdk)
 
 # Use
-As of v2 of the api an api key is needed to get the full benefit of it. This can be aquired at [pokemontcg.io](pokemontcg.io), without using a key rate limits are a lot lower.
+As of v2 of the api an api key is needed to get the full benefit of it. This can be aquired at [pokemontcg.io](https://pokemontcg.io), without using a key rate limits are a lot lower.
 ```cs
 // instantiate client
 PokemonApiClient pokeClient = new PokemonApiClient();
@@ -38,7 +38,7 @@ PokemonApiClient pokeClient = new PokemonApiClient(client);
 // gets all cards regardless of type
 var card = await pokeClient.GetApiResourceAsync<Card>();
 
-// with pagination
+// with pagination. take on the api is limited to a max of 250
 var card = await pokeClient.GetApiResourceAsync<Card>(take: 10, skip: 2);
 
 // Pokemon Cards
@@ -72,6 +72,44 @@ var filter = PokemonFilterBuilder.CreatePokemonFilter()
     .AddName("Darkrai")
     .AddName("Pikachu")
     .AddSetName("Base");
+```
+Most of the filter extensions are prefixed with Add 
+```c#
+// Pokemon
+AddId()
+AddName()
+AddSubTypes()
+AddHpRange()
+AddTypes()
+AddEvolvesFrom()
+AddEvolvesTo()
+AddAttackCostRange()
+AddSetName()
+AddSetSeries()
+AddRarity()
+
+// Sets
+AddId()
+AddName()
+AddSeries()
+AddPtcgoCode()
+
+// Trainer
+AddId()
+AddName()
+AddSetName()
+AddSetSeries()
+
+// Energy
+AddId()
+AddName()
+AddSubTypes()
+AddSetName()
+AddSetSeries()
+```
+There is also a custom extension to bring only Pokemon cards that have an ancient trait
+```c#
+var filter = PokemonFilterBuilder.CreatePokemonFilter().HasAncientTrait();
 ```
 If the filter extensions don't cover off everything you can build up your own
 ```c#
@@ -110,7 +148,7 @@ var cards = await pokeClient.GetApiResourceAsync<PokemonCard>(filter);
 var cards = await pokeClient.GetApiResourceAsync<PokemonCard>(10, 2, filter);
 ```
 ## String Method Definitions
-As these lists as small and of type List<string> these will return all.
+As these lists are small and of type ```List<string>``` these will return all.
 ##### SubType
 ```c#
 var types = await pokeClient.GetStringResourceAsync<SubTypes>();
@@ -147,7 +185,7 @@ var fromCache = darkrai.FromCache;
 
 To clear the cache of data:
 ```c#
-// clear all caches for both resources and pages
+// clear all caches for all resources
 pokeClient.ClearCache();
 ```
 Additional overloads are provided to allow for clearing the individual caches for resources, as well as by type of cache.
@@ -175,6 +213,7 @@ Rarities
     public int Hp { get; set; }
     public List<string> Types { get; set; }
     public string EvolvesFrom { get; set; }
+    public AncientTrait AncientTrait { get; set; }
     public List<Ability> Abilities { get; set; }
     public List<Attack> Attacks { get; set; }
     public List<Resistance> Weaknesses { get; set; }
@@ -206,6 +245,7 @@ Rarities
     public int Hp { get; set; }
     public List<string> Types { get; set; }
     public string EvolvesFrom { get; set; }
+    public AncientTrait AncientTrait { get; set; }
     public List<Ability> Abilities { get; set; }
     public List<Attack> Attacks { get; set; }
     public List<Resistance> Weaknesses { get; set; }
@@ -268,6 +308,11 @@ string  Name
 string  Text
 string  Type
 ```
+###### Ancient Trait
+```c#
+string  Name
+string  Text
+```
 ###### Attack
 ```c#
 List<string> Cost
@@ -299,6 +344,8 @@ Prices ReverseHolofoil
 Prices Normal
 Prices The1StEditionHolofoil
 Prices UnlimitedHolofoil
+Prices The1StEdition
+Prices Unlimited
 ```
 ###### Prices
 ```c#
@@ -354,6 +401,3 @@ Images Images
 * Commit your changes (git commit -am 'Add some feature')
 * Push to the branch (git push origin my-new-feature)
 * Create a new Pull Request to ```develop```
-
-#### Mentions
-- Caching and some api handling used/inspired from [PokeApiNet](https://github.com/mtrdp642/PokeApiNet) under the MIT license

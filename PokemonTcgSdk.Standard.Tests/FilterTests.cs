@@ -2,6 +2,7 @@
 
 using Features.FilterBuilder.Pokemon;
 using Features.FilterBuilder.Set;
+using Infrastructure.HttpClients.CommonModels;
 using NUnit.Framework;
 
 public class FilterTests
@@ -30,7 +31,7 @@ public class FilterTests
         // assemble
         var dicObj = new Dictionary<string, string>
         {
-            {"Name", "Darkness Ablaze or Lost Origins"}
+            {"Name", "Darkness Ablaze,Lost Origins"}
         };
 
         // act
@@ -132,6 +133,23 @@ public class FilterTests
             .AddRarity("Common")
             .AddAttackCostRange("2", "4", false)
             .AddEvolvesFrom("Pikachu");
+
+        // assert
+        Assert.That(filterBuilder, Is.EqualTo(dicObj));
+    }
+
+    [Test]
+    public void PokemonFilter_HasMultipleAncientTraits()
+    {
+        // assemble
+        var dicObj = new Dictionary<string, string>
+        {
+            {"ancientTrait.name", Global.AncientTrait.Traits}
+        };
+
+        // act
+        var filterBuilder = PokemonFilterBuilder.CreatePokemonFilter().HasAncientTrait().HasAncientTrait().HasAncientTrait();
+
 
         // assert
         Assert.That(filterBuilder, Is.EqualTo(dicObj));

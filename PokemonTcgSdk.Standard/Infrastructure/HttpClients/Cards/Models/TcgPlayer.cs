@@ -41,15 +41,24 @@ public class TcgPlayerPrices
 
 public class Prices
 {
-    [JsonPropertyName("low")] public double Low { get; set; }
+    [JsonPropertyName("low")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Low { get; set; }
 
-    [JsonPropertyName("mid")] public double Mid { get; set; }
+    [JsonPropertyName("mid")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Mid { get; set; }
 
-    [JsonPropertyName("high")] public double High { get; set; }
+    [JsonPropertyName("high")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double High { get; set; }
 
-    [JsonPropertyName("market")] public double Market { get; set; }
+    [JsonPropertyName("market")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Market { get; set; }
 
     [JsonPropertyName("directLow")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public double? DirectLow { get; set; }
 }

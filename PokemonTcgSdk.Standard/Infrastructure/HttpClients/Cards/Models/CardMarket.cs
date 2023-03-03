@@ -21,71 +21,84 @@ public class CardMarketPrices
     /// <summary>
     ///     The average sell price as shown in the chart at the website for non-foils.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageSellPrice { get; set; }
 
     /// <summary>
     ///     The lowest price at the market for non-foils.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? LowPrice { get; set; }
 
     /// <summary>
     ///     The trend price as shown at the website (and in the chart) for non-foils.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? TrendPrice { get; set; }
 
     /// <summary>
     ///     The average sell price as shown in the chart at the website for reverse holos.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? ReverseHoloSell { get; set; }
 
     /// <summary>
     ///     The lowest price at the market as shown at the website (for condition EX+) for reverse holos.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? ReverseHoloLow { get; set; }
 
     /// <summary>
     ///     The trend price as shown at the website (and in the chart) for reverse holos.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? ReverseHoloTrend { get; set; }
 
     /// <summary>
     ///     The lowest price at the market for non-foils with condition EX or better.
     /// </summary>
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? LowPriceExPlus { get; set; }
 
     /// <summary>
     ///     The average sale price over the last day.
     /// </summary>
     [JsonPropertyName("avg1")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageDay { get; set; }
 
     /// <summary>
     ///     The average sale price over the last 7 days.
     /// </summary>
     [JsonPropertyName("avg7")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageWeek { get; set; }
 
     /// <summary>
     ///     The average sale price over the last 30 days.
     /// </summary>
     [JsonPropertyName("avg30")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageMonth { get; set; }
 
     /// <summary>
     ///     The average sale price over the last day for reverse holos.
     /// </summary>
     [JsonPropertyName("reverseHoloAvg1")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageDayReverseHolo { get; set; }
 
     /// <summary>
     ///     The average sale price over the last 7 days for reverse holos.
     /// </summary>
     [JsonPropertyName("reverseHoloAvg7")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageWeekReverseHolo { get; set; }
 
     /// <summary>
     ///     The average sale price over the last 30 days for reverse holos.
     /// </summary>
     [JsonPropertyName("reverseHoloAvg30")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public decimal? AverageMonthReverseHolo { get; set; }
 }
